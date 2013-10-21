@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" initialize="init(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			import mx.events.FlexEvent;
+			
+			import ssen.common.MathUtils;
+
+			[Bindable]
+			private var data:IList;
+
+			private function init(event:FlexEvent):void {
+				var arr:Array=[];
+				var f:int=-1;
+				var fmax:int=MathUtils.rand(30, 100);
+				var obj:Object;
+				while (++f < fmax) {
+					obj={};
+					obj.a=MathUtils.rand(10, 1000);
+					obj.b=MathUtils.rand(10, 1000);
+					obj.c=MathUtils.rand(10, 1000);
+					obj.d=MathUtils.rand(10, 1000);
+					obj.e=MathUtils.rand(10, 1000);
+					obj.f=MathUtils.rand(10, 1000);
+					arr.push(obj);
+				}
+
+				data=new ArrayCollection(arr);
+			}
+		]]>
+	</fx:Script>
+	<s:DataGrid width="400" height="300" editable="true" dataProvider="{data}" focusEnabled="false">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn dataField="a"/>
+				<s:GridColumn dataField="b"/>
+				<s:GridColumn dataField="c"/>
+				<s:GridColumn dataField="d"/>
+				<s:GridColumn dataField="e"/>
+				<s:GridColumn dataField="f"/>
+			</s:ArrayList>
+		</s:columns>
+	</s:DataGrid>
+</s:Application>
